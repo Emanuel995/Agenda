@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+    
+{% block body %}
+<div class="container col-4">
+    <h2 class="row justify-content-center p-1">{{title}}</h2>
+    <hr>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <table class="table table-bordered border-Secondary py-2">
+        <tr>
+            <td>
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="row justify-content-center px-4">
+                        <input type="submit" value="Registrarse" class="btn btn-primary">
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock body %}
+    
